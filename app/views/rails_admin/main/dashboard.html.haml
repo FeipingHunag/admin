@@ -15,10 +15,6 @@
           %td
             %span.show= link_to RailsAdmin.config(abstract_model).label_plural, index_path
           %td
-            - if (last_used = @most_recent_changes[abstract_model.pretty_name])
-              = time_ago_in_words last_used
-              = t "admin.dashboard.ago"
-          %td
             - count = @count[abstract_model.pretty_name]
             - percent = count > 0 ? (@max < 2.0 ? count : ((Math.log(count) * 100.0) / Math.log(@max))) : -1
             .label.animate-width-to{:class => get_indicator(percent), :'data-animate-length' => ([1.0, percent].max.to_i * 20), :'data-animate-width-to' => "#{[2.0, percent].max.to_i}%", :style => "width:2%"}= @count[abstract_model.pretty_name]
